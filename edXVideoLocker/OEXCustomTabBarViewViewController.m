@@ -139,7 +139,7 @@
     }
     else
     {
-        if (_dataInterface.selectedCourseOnFront.video_outline)
+        if (self.course.video_outline)
         {
             [self updateCourseWareData];
         }
@@ -270,7 +270,7 @@
     
     self.table_Announcements.hidden=YES;
 
-    self.lastAccessedVideo=[self.dataInterface lastAccessedSubsectionForCourseID:_dataInterface.selectedCourseOnFront.course_id];
+    self.lastAccessedVideo=[self.dataInterface lastAccessedSubsectionForCourseID:self.course.course_id];
     
     
     [[OEXOpenInBrowserViewController sharedInstance] addViewToContainerSuperview:self.containerView];
@@ -300,7 +300,7 @@
     
     // To get updated from the server.
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_dataInterface getLastVisitedModule];
+        [_dataInterface getLastVisitedModuleForCourseID:self.course.course_id];
     });
 }
 
@@ -345,7 +345,7 @@
     [self.customProgressBar setHidden:YES];
     [self.btn_Downloads setHidden:YES];
     
-    NSData * data = [_dataInterface resourceDataForURLString:_dataInterface.selectedCourseOnFront.video_outline downloadIfNotAvailable:NO];
+    NSData * data = [_dataInterface resourceDataForURLString:self.course.video_outline downloadIfNotAvailable:NO];
     if (data)
     {
         [self.dataInterface processVideoSummaryList:data URLString:self.course.video_outline];
@@ -354,7 +354,7 @@
     }
     else
     {
-        [_dataInterface downloadWithRequestString:_dataInterface.selectedCourseOnFront.video_outline forceUpdate:NO];
+        [_dataInterface downloadWithRequestString:self.course.video_outline forceUpdate:NO];
         [self getCourseOutlineData];
     }
     
@@ -602,7 +602,7 @@
         }
         else if ([URLString isEqualToString:NOTIFICATION_VALUE_URL_LASTACCESSED])
         {
-            self.lastAccessedVideo=[self.dataInterface lastAccessedSubsectionForCourseID:_dataInterface.selectedCourseOnFront.course_id];
+            self.lastAccessedVideo=[self.dataInterface lastAccessedSubsectionForCourseID:self.course.course_id];
             if (self.lastAccessedVideo)
             {
                 [self reloadTableOnMainThread];
@@ -1145,10 +1145,10 @@
         }
     }
     // Analytics Bulk Video Download From Section
-    if (_dataInterface.selectedCourseOnFront.course_id)
+    if (self.course.course_id)
     {
         [OEXAnalytics trackSectionBulkVideoDownload: chapter.entryID
-                                        CourseID: _dataInterface.selectedCourseOnFront.course_id
+                                        CourseID: self.course.course_id
                                       VideoCount: [validArray count]];
         
         

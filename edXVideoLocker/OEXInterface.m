@@ -1416,7 +1416,7 @@ static OEXInterface * _sharedInterface = nil;
 }
 
 
-- (void)updateLastVisitedModule:(NSString*)module
+- (void)updateLastVisitedModule:(NSString*)module forCourseID:(NSString*)courseID
 {
     if (!module)
         return;
@@ -1424,11 +1424,11 @@ static OEXInterface * _sharedInterface = nil;
     NSString *timestamp = [self getFormattedDate];
 
     // Set to DB first and then depending on the response the DB gets updated
-    [self setLastAccessedDataToDB:module TimeStamp:timestamp];
+    [self setLastAccessedDataToDB:module withTimeStamp:timestamp forCourseID:courseID];
     
     OEXUserDetails *user = [OEXAuthentication getLoggedInUser];
     
-    NSString* path = [NSString stringWithFormat:@"/api/mobile/v0.5/users/%@/course_status_info/%@", user.username , self.selectedCourseOnFront.course_id];
+    NSString* path = [NSString stringWithFormat:@"/api/mobile/v0.5/users/%@/course_status_info/%@", user.username , courseID];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [OEXConfig sharedConfig].apiHostURL, path]]];
     
@@ -1468,7 +1468,7 @@ static OEXInterface * _sharedInterface = nil;
 
         if (![module isEqualToString:subsectionID])
         {
-            [self setLastAccessedDataToDB:subsectionID TimeStamp:timestamp];
+            [self setLastAccessedDataToDB:subsectionID withTimeStamp:timestamp forCourseID:courseID];
         }
 
 
@@ -1477,20 +1477,20 @@ static OEXInterface * _sharedInterface = nil;
 
 
 
-- (void)setLastAccessedDataToDB:(NSString *)subsectionID TimeStamp:(NSString *)timestamp
+- (void)setLastAccessedDataToDB:(NSString *)subsectionID withTimeStamp:(NSString *)timestamp forCourseID:(NSString*)courseID
 {
     OEXHelperVideoDownload *video = [self getSubsectionNameForSubsectionID:subsectionID];
     
-    [self setLastAccessedSubsectionWith:subsectionID andSubsectionName:video.summary.sectionPathEntry.entryID forCourseID:self.selectedCourseOnFront.course_id OnTimeStamp:timestamp];
+    [self setLastAccessedSubsectionWith:subsectionID andSubsectionName:video.summary.sectionPathEntry.entryID forCourseID:courseID OnTimeStamp:timestamp];
 }
 
 
 
-- (void)getLastVisitedModule
+- (void)getLastVisitedModuleForCourseID:(NSString*)courseID
 {
     OEXUserDetails *user = [OEXAuthentication getLoggedInUser];
     
-    NSString* path = [NSString stringWithFormat:@"/api/mobile/v0.5/users/%@/course_status_info/%@", user.username , self.selectedCourseOnFront.course_id];
+    NSString* path = [NSString stringWithFormat:@"/api/mobile/v0.5/users/%@/course_status_info/%@", user.username , courseID];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [OEXConfig sharedConfig].apiHostURL, path]]];
     
@@ -1525,7 +1525,7 @@ static OEXInterface * _sharedInterface = nil;
         {
             NSString *timestamp = [self getFormattedDate];
             // Set to DB first and then depending on the response the DB gets updated
-            [self setLastAccessedDataToDB:subsectionID TimeStamp:timestamp];
+            [self setLastAccessedDataToDB:subsectionID withTimeStamp:timestamp forCourseID:courseID];
 
             //Post notification
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_URL_RESPONSE
@@ -1545,7 +1545,7 @@ static OEXInterface * _sharedInterface = nil;
 #pragma mark - Analytics Call
 
 
-- (void)sendAnalyticsEvents:(OEXVideoState)state WithCurrentTime:(NSTimeInterval)currentTime
+- (void)sendAnalyticsEvents:(OEXVideoState)state withCurrentTime:(NSTimeInterval)currentTime forVideo:(OEXHelperVideoDownload*)video
 {
     if (isnan(currentTime))
     {
@@ -1558,11 +1558,11 @@ static OEXInterface * _sharedInterface = nil;
             
             ELog(@"EdxInterface sendAnalyticsEvents ==>> MPMoviePlaybackStateStopped");
             
-            if (self.selectedVideoUsedForAnalytics.summary.videoID)
+            if (video.summary.videoID)
             {
-                [OEXAnalytics trackVideoLoading:self.selectedVideoUsedForAnalytics.summary.videoID
-                                    CourseID:self.selectedCourseOnFront.course_id
-                                     UnitURL:self.selectedVideoUsedForAnalytics.summary.unitURL];
+                [OEXAnalytics trackVideoLoading:video.summary.videoID
+                                    CourseID:video.course_id
+                                     UnitURL:video.summary.unitURL];
             }
             
             break;
@@ -1571,12 +1571,12 @@ static OEXInterface * _sharedInterface = nil;
             
             ELog(@"EdxInterface sendAnalyticsEvents ==>> MPMoviePlaybackStateStopped");
             
-            if (self.selectedVideoUsedForAnalytics.summary.videoID)
+            if (video.summary.videoID)
             {
-                [OEXAnalytics trackVideoStop:self.selectedVideoUsedForAnalytics.summary.videoID
+                [OEXAnalytics trackVideoStop:video.summary.videoID
                               CurrentTime:currentTime
-                                 CourseID:self.selectedCourseOnFront.course_id
-                                  UnitURL:self.selectedVideoUsedForAnalytics.summary.unitURL];
+                                 CourseID:video.course_id
+                                  UnitURL:video.summary.unitURL];
             }
             
             break;
@@ -1585,12 +1585,12 @@ static OEXInterface * _sharedInterface = nil;
             
             ELog(@"EdxInterface sendAnalyticsEvents ==>> MPMoviePlaybackStatePlaying");
             
-            if (self.selectedVideoUsedForAnalytics.summary.videoID)
+            if (video.summary.videoID)
             {
-                [OEXAnalytics trackVideoPlaying:self.selectedVideoUsedForAnalytics.summary.videoID
+                [OEXAnalytics trackVideoPlaying:video.summary.videoID
                                  CurrentTime:currentTime
-                                    CourseID:self.selectedCourseOnFront.course_id
-                                     UnitURL:self.selectedVideoUsedForAnalytics.summary.unitURL];
+                                    CourseID:video.course_id
+                                     UnitURL:video.summary.unitURL];
             }
             
             break;
@@ -1599,13 +1599,13 @@ static OEXInterface * _sharedInterface = nil;
         case OEXVideoStatePause:
             
             ELog(@"EdxInterface sendAnalyticsEvents ==>> MPMoviePlaybackStatePaused");
-            if (self.selectedVideoUsedForAnalytics.summary.videoID)
+            if (video.summary.videoID)
             {
                 // MOB - 395
-                [OEXAnalytics trackVideoPause:self.selectedVideoUsedForAnalytics.summary.videoID
+                [OEXAnalytics trackVideoPause:video.summary.videoID
                                CurrentTime:currentTime
-                                  CourseID:self.selectedCourseOnFront.course_id
-                                   UnitURL:self.selectedVideoUsedForAnalytics.summary.unitURL];
+                                  CourseID:video.course_id
+                                   UnitURL:video.summary.unitURL];
             }
             
             break;
@@ -1644,8 +1644,6 @@ static OEXInterface * _sharedInterface = nil;
             self.signInPassword = nil;
             self.parser = nil;
             self.numberOfRecentDownloads = 0;
-            self.selectedCourseOnFront = nil;
-            self.selectedVideoUsedForAnalytics = nil;
             [self.videoSummaries removeAllObjects];
             completionHandler();
         }];
@@ -1656,14 +1654,12 @@ static OEXInterface * _sharedInterface = nil;
 
 # pragma  mark activate interface for user
 
--(void)activateIntefaceForUser:(OEXUserDetails *)user{
+-(void)activateInterfaceForUser:(OEXUserDetails *)user{
   
     // Reset Default Settings
     
     _sharedInterface.shownOfflineView=NO;
     // Used for CC
-    _sharedInterface.selectedCourseOnFront = [[OEXCourse alloc] init];
-    _sharedInterface.selectedVideoUsedForAnalytics = [[OEXHelperVideoDownload alloc] init];
     _sharedInterface.selectedCCIndex = -1;
     _sharedInterface.selectedVideoSpeedIndex = -1;
     

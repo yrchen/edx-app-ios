@@ -743,7 +743,6 @@ typedef  enum OEXAlertType {
 
         NSDictionary *dictVideo = [self.arr_CourseData objectAtIndex:indexPath.section];
         OEXCourse *obj_course = [dictVideo objectForKey:CAV_KEY_COURSE];
-        _dataInterface.selectedCourseOnFront = obj_course;
         // Navigate to nextview and pass array of HelperVideoDownload obj...
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -768,12 +767,6 @@ typedef  enum OEXAlertType {
             
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:_selectedIndexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
             _selectedIndexPath=indexPath;
-            
-            
-            NSDictionary *dictVideo = [self.arr_CourseData objectAtIndex:indexPath.section];
-            _dataInterface.selectedCourseOnFront = [dictVideo objectForKey:CAV_KEY_COURSE];
-            
-            
 
             [self playVideoForIndexPath:indexPath];
             
@@ -1007,21 +1000,19 @@ typedef  enum OEXAlertType {
     [_videoPlayerInterface setShouldRotate:YES];
     
     NSArray *videos = [[self.arr_CourseData objectAtIndex:indexPath.section] objectForKey:CAV_KEY_RECENT_VIDEOS];
-    OEXHelperVideoDownload *obj = [videos objectAtIndex:indexPath.row];
     
-    // Assign this for Analytics
-    _dataInterface.selectedVideoUsedForAnalytics = obj;
+    self.currentTappedVideo = [videos objectAtIndex:indexPath.row];
 
     // Set the path of the downloaded videos
-    [_dataInterface downloadTranscripts:obj];
+    [_dataInterface downloadTranscripts:self.currentTappedVideo];
   
     
     NSFileManager *filemgr = [NSFileManager defaultManager];
-    NSString *slink = [obj.filePath stringByAppendingPathExtension:@"mp4"];
+    NSString *slink = [self.currentTappedVideo.filePath stringByAppendingPathExtension:@"mp4"];
     if (![filemgr fileExistsAtPath:slink])
     {
         NSError *error = nil;
-        [filemgr createSymbolicLinkAtPath:[obj.filePath stringByAppendingPathExtension:@"mp4"] withDestinationPath:obj.filePath error:&error];
+        [filemgr createSymbolicLinkAtPath:[self.currentTappedVideo.filePath stringByAppendingPathExtension:@"mp4"] withDestinationPath:self.currentTappedVideo.filePath error:&error];
       
         if (error)
         {
@@ -1035,17 +1026,16 @@ typedef  enum OEXAlertType {
     // handle the frame of table, videoplayer & bottom view
     [self handleComponentsFrame];
     
-    self.currentTappedVideo = obj;
 
     self.lbl_videoHeader.text = [NSString stringWithFormat:@"%@ ", self.currentTappedVideo.summary.name];
-    self.lbl_videobottom.text = [NSString stringWithFormat:@"%@ ", obj.summary.name];
+    self.lbl_videobottom.text = [NSString stringWithFormat:@"%@ ", self.currentTappedVideo.summary.name];
     self.lbl_section.text = [NSString stringWithFormat:@"%@\n%@", self.currentTappedVideo.summary.sectionPathEntry.name, self.currentTappedVideo.summary.chapterPathEntry.name];
 	
-    [_videoPlayerInterface playVideoFor:obj];
+    [_videoPlayerInterface playVideoFor:self.currentTappedVideo];
     
     
     // Send Analytics
-    [_dataInterface sendAnalyticsEvents:OEXVideoStatePlay WithCurrentTime:self.videoPlayerInterface.moviePlayerController.currentPlaybackTime];
+    [_dataInterface sendAnalyticsEvents:OEXVideoStatePlay withCurrentTime:self.videoPlayerInterface.moviePlayerController.currentPlaybackTime forVideo:self.currentTappedVideo];
 }
 
 
