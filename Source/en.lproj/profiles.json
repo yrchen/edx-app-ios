@@ -2,33 +2,33 @@
     "fields":[
     {
               "name" : "account_privacy",
-              "label" : "Other learners can see my:",
+              "label" : "其他使用者可以看到我的",
               "type" : "switch",
               "data_type" : "boolean",
               "options" : {
                 "values" : [
-                            { "name" : "Full Profile", "value" : "all_users" },
-                            { "name" : "Limited Profile",  "value" : "private" }
+                            { "name" : "完整的個人檔案", "value" : "all_users" },
+                            { "name" : "受限的個人檔案",  "value" : "private" }
                  ]
               },
-              "instructions" : "A limited profile only shares your username and profile photo.",
+              "instructions" : "受限的個人檔案緊分享您的使用者帳號以及個人照片",
               "accessibility_hint" : "Change what information is shared with others."
     },
     {
               "name" : "year_of_birth",
-              "label" : "Birth year",
+              "label" : "出生年",
               "type" : "select",
               "options" : {
                 "range_min" : 1896,
                 "range_max" : 2015,
                 "allows_none" : true
               },
-              "instructions" : "You must specify your birth year before you can share your full profile.",
-              "sub_instructions" : "This will not be displayed publicly"
+              "instructions" : "您必須先設定您的出生年，才能與其他人分享您的完整個人檔案",
+              "sub_instructions" : "這不會被公開顯示"
     },
     {
               "name" : "country",
-              "label" : "Location",
+              "label" : "國家",
               "type" : "select",
               "data_type" : "country",
               "options" : {
@@ -38,7 +38,7 @@
     },
     {
               "name" : "language_proficiencies",
-              "label" : "Primary language",
+              "label" : "語言",
               "type" : "select",
               "data_type" : "language",
               "options" : {
@@ -48,9 +48,9 @@
     },
     {
               "name" : "bio",
-              "label" : "About me",
+              "label" : "關於我",
               "type" : "textarea",
-              "placeholder" : "I would like to learn..."
+              "placeholder" : "在中華開放教育平台上，我想要學到..."
     }
     ]
 }

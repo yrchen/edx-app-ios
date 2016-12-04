@@ -1,4 +1,7 @@
  [{
+  "name": "台灣",
+  "value": "TW"
+  }, {
   "name": "Afghanistan",
   "value": "AF"
   }, {
@@ -646,9 +649,6 @@
   }, {
   "name": "Syrian Arab Republic",
   "value": "SY"
-  }, {
-  "name": "Taiwan",
-  "value": "TW"
   }, {
   "name": "Tajikistan",
   "value": "TJ"
