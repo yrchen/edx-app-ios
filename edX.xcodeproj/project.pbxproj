@@ -1298,7 +1298,6 @@
 		77E647C51C90C70600B6740D /* NSString+OEXFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+OEXFormatting.h"; path = "Source/Core/Code/NSString+OEXFormatting.h"; sourceTree = SOURCE_ROOT; };
 		77E647C61C90C70600B6740D /* NSString+OEXFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+OEXFormatting.m"; path = "Source/Core/Code/NSString+OEXFormatting.m"; sourceTree = SOURCE_ROOT; };
 		77E648201C90DD6B00B6740D /* edXCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = edXCore.h; sourceTree = "<group>"; };
-		77E648211C90DD6B00B6740D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77E648241C90DE0200B6740D /* NSBundle+OEXConveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+OEXConveniences.h"; path = "Source/Core/Code/NSBundle+OEXConveniences.h"; sourceTree = SOURCE_ROOT; };
 		77E648251C90DE0200B6740D /* NSBundle+OEXConveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+OEXConveniences.m"; path = "Source/Core/Code/NSBundle+OEXConveniences.m"; sourceTree = SOURCE_ROOT; };
 		77E648281C90DE4700B6740D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Core/Test/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -1542,7 +1541,6 @@
 		BECB7B0E1924C0C3009C77F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BECB7B101924C0C3009C77F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BECB7B121924C0C3009C77F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		BECB7B161924C0C3009C77F1 /* edX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "edX-Info.plist"; sourceTree = "<group>"; };
 		BECB7B1A1924C0C3009C77F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BECB7B1C1924C0C3009C77F1 /* edX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "edX-Prefix.pch"; sourceTree = "<group>"; };
 		BECB7B1D1924C0C3009C77F1 /* OEXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OEXAppDelegate.h; sourceTree = "<group>"; };
@@ -1589,6 +1587,12 @@
 		E0C6EF961BFF4B9900B315E3 /* UIButton+TintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+TintColor.swift"; sourceTree = "<group>"; };
 		E0ED96E61D6EED1C00B48B64 /* OEXCourseInfoViewController+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OEXCourseInfoViewController+Swift.swift"; sourceTree = "<group>"; };
 		E0FC64C11C85B46C004E3E92 /* DiscussionDataParsingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionDataParsingTests.swift; sourceTree = "<group>"; };
+		EB1F1CCB1DF455200086CF74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
+		EB1F1CCD1DF45E100086CF74 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		EB1F1CCE1DF45E100086CF74 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hant"; path = "zh-Hant.lproj/profiles.json"; sourceTree = "<group>"; };
+		EB1F1CCF1DF45E100086CF74 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hant"; path = "zh-Hant.lproj/countries.json"; sourceTree = "<group>"; };
+		EB1F1CD01DF45E100086CF74 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hant"; path = "zh-Hant.lproj/languages.json"; sourceTree = "<group>"; };
+		EBCF2B731DF4423100FA09D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = "en.lproj/edX-Info.plist"; sourceTree = "<group>"; };
 		F22A0ABA1CE60D5E00D50DFF /* NetworkManager+Authenticators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Authenticators.swift"; sourceTree = "<group>"; };
 		F22A0ABC1CE660B300D50DFF /* LoginApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = SOURCE_ROOT; };
 		F2808CF91CF374FA002EAD1D /* NetworkManager+AuthenticatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+AuthenticatorTests.swift"; sourceTree = "<group>"; };
@@ -2582,7 +2586,7 @@
 			isa = PBXGroup;
 			children = (
 				77E648201C90DD6B00B6740D /* edXCore.h */,
-				77E648211C90DD6B00B6740D /* Info.plist */,
+				EB1F1CCC1DF455200086CF74 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			path = Source/Core/SupportingFiles;
@@ -3109,7 +3113,7 @@
 				773A04691AF289650076532C /* edX-Bridging-Header.h */,
 				BEEEBF82196AAACF00EF2C35 /* Localizable.strings */,
 				B47780581AADA95400436DB4 /* Terms-and-Services.htm */,
-				BECB7B161924C0C3009C77F1 /* edX-Info.plist */,
+				EBCF2B741DF4423100FA09D3 /* edX-Info.plist */,
 				BECB7B1A1924C0C3009C77F1 /* main.m */,
 				BECB7B1C1924C0C3009C77F1 /* edX-Prefix.pch */,
 			);
@@ -3527,6 +3531,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hant",
 			);
 			mainGroup = BECB7B021924C0C3009C77F1;
 			productRefGroup = BECB7B0C1924C0C3009C77F1 /* Products */;
@@ -4455,6 +4460,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1A03DEA41BBC72BA006783FB /* en */,
+				EB1F1CCF1DF45E100086CF74 /* zh-Hant */,
 			);
 			name = countries.json;
 			sourceTree = "<group>";
@@ -4463,6 +4469,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1A55019D1BBA30C900D5F9DD /* en */,
+				EB1F1CCE1DF45E100086CF74 /* zh-Hant */,
 			);
 			name = profiles.json;
 			sourceTree = "<group>";
@@ -4471,6 +4478,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1AFEB1BA1BBD88F3004C471D /* en */,
+				EB1F1CD01DF45E100086CF74 /* zh-Hant */,
 			);
 			name = languages.json;
 			sourceTree = "<group>";
@@ -4479,8 +4487,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				773BE0001AAA07DD0074C3CA /* en */,
+				EB1F1CCD1DF45E100086CF74 /* zh-Hant */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		EB1F1CCC1DF455200086CF74 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB1F1CCB1DF455200086CF74 /* en */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
+		EBCF2B741DF4423100FA09D3 /* edX-Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBCF2B731DF4423100FA09D3 /* en */,
+			);
+			name = "edX-Info.plist";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -4490,6 +4515,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -4849,6 +4875,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -4899,6 +4926,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
