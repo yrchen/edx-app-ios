@@ -45,17 +45,17 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>org.edx.mobile</string>
+			<string>tw.openedu.mobile</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>org.edx.mobile</string>
+				<string>tw.openedu.mobile</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>2.7.3</string>
 	<key>FacebookDisplayName</key>
-	<string>edX</string>
+	<string>OpenEdu</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
