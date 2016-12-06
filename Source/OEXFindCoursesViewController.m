@@ -18,7 +18,7 @@
 #import "OEXStyles.h"
 #import "NSURL+OEXPathExtensions.h"
 
-NSString* const OEXFindCoursesLinkURLScheme = @"edxapp";
+NSString* const OEXFindCoursesLinkURLScheme = @"openedu";
 
 static NSString* const OEXFindCoursesCourseInfoPath = @"course_info/";
 static NSString* const OEXFindCoursesPathIDKey = @"path_id";
