@@ -24,21 +24,21 @@
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Icon-29.png</string>
-					<string>Icon-29@2x.png</string>
-					<string>Icon-29@3x.png</string>
-					<string>Icon-40.png</string>
-					<string>Icon-40@2x.png</string>
-					<string>Icon-40@3x.png</string>
-					<string>Icon-60@2x.png</string>
-					<string>Icon-60@3x.png</string>
-					<string>Icon-76.png</string>
-					<string>Icon-76@2x.png</string>
-				</array>
-			</dict>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>Icon-29.png</string>
+				<string>Icon-29@2x.png</string>
+				<string>Icon-29@3x.png</string>
+				<string>Icon-40.png</string>
+				<string>Icon-40@2x.png</string>
+				<string>Icon-40@3x.png</string>
+				<string>Icon-60@2x.png</string>
+				<string>Icon-60@3x.png</string>
+				<string>Icon-76.png</string>
+				<string>Icon-76@2x.png</string>
+			</array>
+		</dict>
 	</dict>
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
@@ -70,7 +70,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.7.3</string>
+	<string>2.7.32</string>
 	<key>FacebookDisplayName</key>
 	<string>OpenEdu</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
